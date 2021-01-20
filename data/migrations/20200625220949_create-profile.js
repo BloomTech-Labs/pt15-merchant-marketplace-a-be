@@ -17,14 +17,27 @@ exports.up = (knex) => {
       tb.string('description', 255);
       tb.string('address', 255);
       tb.string('phone_number', 255);
-      tb.string('merchant_id').notNullable().unique().references('profiles.okta_id').onUpdate('CASCADE').onDelete('CASCADE');
+      tb.string('merchant_id')
+        .notNullable()
+        .unique()
+        .references('profiles.okta_id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     })
     .createTable('stores_reviews', (tb) => {
       tb.increments();
       tb.integer('rating').notNullable();
       tb.string('comment');
-      tb.string('store_id').notNullable().references('stores.id').onUpdate('CASCADE').onDelete('CASCADE');
-      tb.string('posted_by').notNullable().references('profiles.okta_id').onUpdate('CASCADE').onDelete('CASCADE');
+      tb.string('store_id')
+        .notNullable()
+        .references('stores.id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
+      tb.string('posted_by')
+        .notNullable()
+        .references('profiles.okta_id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     })
     .createTable('products', (tb) => {
       tb.increments();
@@ -34,7 +47,11 @@ exports.up = (knex) => {
       tb.string('description');
       tb.boolean('published').notNullable().defaultTo(false);
       tb.string('image_url');
-      tb.string('store_id').notNullable().references('stores.id').onUpdate('CASCADE').onDelete('CASCADE');
+      tb.string('store_id')
+        .notNullable()
+        .references('stores.id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     })
 };
 
