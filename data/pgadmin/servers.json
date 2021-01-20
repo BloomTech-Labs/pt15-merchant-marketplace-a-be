@@ -1,6 +1,6 @@
 {
   "Servers": {
-    "1": {
+    "dev": {
       "Name": "API-dev",
       "Group": "Dev",
       "Port": 5432,
