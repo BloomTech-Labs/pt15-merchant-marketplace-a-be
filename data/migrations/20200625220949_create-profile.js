@@ -43,7 +43,7 @@ exports.up = (knex) => {
       tb.increments();
       tb.string('name').notNullable().unique();
       tb.integer('stock').notNullable().defaultTo(0);
-      tb.double('price').notNullable().defaultTo(.99);
+      tb.double('price').notNullable().defaultTo(0.99);
       tb.string('description');
       tb.boolean('published').notNullable().defaultTo(false);
       tb.string('image_url');
@@ -52,7 +52,7 @@ exports.up = (knex) => {
         .references('stores.id')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-    })
+    });
 };
 
 exports.down = (knex) => {

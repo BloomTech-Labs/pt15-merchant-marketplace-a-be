@@ -7,7 +7,7 @@ exports.seed = function (knex) {
       description: 'Rugs, Rugs, Rugs! Discount Rugs, Fine Rugs, Bathroom Rugs!',
       address: '100 Davidson Street, Maine',
       phone_number: '(555) 444-3333',
-      merchant_id: '00ulthapbErVUwVJy4x6',      
+      merchant_id: '00ulthapbErVUwVJy4x6',
     },
   ]);
 };
