@@ -4,9 +4,9 @@ exports.seed = function (knex) {
         {
             id: 1,
             rating: 5,
-            comment: "This is a test rating and comment for a store.",
-            store_id: "00ulthapbErVUwVJy4x6-SuperStore_Rug_Emporium",
-            posted_by: "00ulthapbErVUwVJy4x6"
+            comment: 'This is a test rating and comment for a store.',
+            store_id: '00ulthapbErVUwVJy4x6-SuperStore_Rug_Emporium',
+            posted_by: '00ulthapbErVUwVJy4x6'
         },
     ]);
 };
