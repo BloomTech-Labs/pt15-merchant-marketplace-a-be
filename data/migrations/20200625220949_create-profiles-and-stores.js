@@ -24,41 +24,10 @@ exports.up = (knex) => {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
     })
-    .createTable('stores_reviews', (tb) => {
-      tb.increments();
-      tb.integer('rating').notNullable();
-      tb.string('comment');
-      tb.string('store_id')
-        .notNullable()
-        .references('stores.id')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-      tb.string('posted_by')
-        .notNullable()
-        .references('profiles.okta_id')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-    })
-    .createTable('products', (tb) => {
-      tb.increments();
-      tb.string('name').notNullable().unique();
-      tb.integer('stock').notNullable().defaultTo(0);
-      tb.double('price').notNullable().defaultTo(0.99);
-      tb.string('description');
-      tb.boolean('published').notNullable().defaultTo(false);
-      tb.string('image_url');
-      tb.string('store_id')
-        .notNullable()
-        .references('stores.id')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
-    });
 };
 
 exports.down = (knex) => {
   return knex.schema
-    .dropTableIfExists('products')
-    .dropTableIfExists('stores_reviews')
     .dropTableIfExists('stores')
     .dropTableIfExists('profiles');
 };
