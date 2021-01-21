@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const profiles = [...new Array(5)].map((i, idx) => ({
+const profiles = [...new Array(5)].map(() => ({
   id: faker.random.alphaNumeric(20),
   avatarUrl: faker.image.avatar(),
   email: faker.internet.email(),
