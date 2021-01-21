@@ -6,7 +6,7 @@ exports.up = (knex) => {
       table.string('name').notNullable();
       table.string('email').notNullable().unique();
       table.string('billing_address').notNullable();
-      table.string('shipping_address').notNullable();
+      table.string('shipping_address');
       table.string('avatarUrl');
       table.boolean('merchant').notNullable().defaultTo(false);
       table.timestamps(true, true);
