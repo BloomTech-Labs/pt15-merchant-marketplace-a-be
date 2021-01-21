@@ -1,5 +1,4 @@
-
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema
     .createTable('products', (tb) => {
       tb.increments();
@@ -52,10 +51,10 @@ exports.up = function(knex) {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
       tb.primary(['product_id', 'tag_id']);
-    })
+    });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema
     .dropTableIfExists('product_tags')
     .dropTableIfExists('product_categories')

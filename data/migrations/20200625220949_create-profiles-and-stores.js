@@ -23,11 +23,9 @@ exports.up = (knex) => {
         .references('profiles.okta_id')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-    })
+    });
 };
 
 exports.down = (knex) => {
-  return knex.schema
-    .dropTableIfExists('stores')
-    .dropTableIfExists('profiles');
+  return knex.schema.dropTableIfExists('stores').dropTableIfExists('profiles');
 };
