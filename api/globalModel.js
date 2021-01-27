@@ -8,7 +8,7 @@ const findItemByProfile = async (store_id) => {
   return await db('products').select('*').where({ store_id });
 };
 
-const createBySellerID = async (sellerID, item) => {
+const createBySellerID = async (store_id, item) => {
   return await db('products').insert(item).where({ store_id: store_id });
 };
 
