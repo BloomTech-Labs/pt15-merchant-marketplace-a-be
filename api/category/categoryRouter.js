@@ -6,7 +6,7 @@ const router = express.Router();
 
 // GET all categories
 router.get('/', authRequired, async (req, res) => {
-  endpointCreator.findAllData('category', req, res);
+  endpointCreator.findAllData('categories', req, res);
 });
 
 // GET all categories for an item
@@ -22,7 +22,7 @@ router.get('/:itemID', authRequired, async (req, res) => {
 
 // POST category
 router.post('/', authRequired, async (req, res) => {
-  endpointCreator.createData('tag', req, res);
+  endpointCreator.createData('categories', req, res);
 });
 
 module.exports = router;
