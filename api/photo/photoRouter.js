@@ -16,7 +16,7 @@ router.get('/:itemID', authRequired, async (req, res) => {
 });
 // POST a photo for an item
 router.post('/', authRequired, async (req, res) => {
-  endpointCreator.createData('photo', req, res);
+  endpointCreator.createData('product_images', req, res);
 });
 
 module.exports = router;
