@@ -4,12 +4,12 @@ const findAll = async (text) => {
   return await db(text);
 };
 
-const findItemByProfile = async (seller_profile_id) => {
-  return await db('item').select('*').where({ seller_profile_id });
+const findItemByProfile = async (store_id) => {
+  return await db('products').select('*').where({ store_id });
 };
 
 const createBySellerID = async (sellerID, item) => {
-  return await db('item').insert(item).where({ seller_profile_id: sellerID });
+  return await db('products').insert(item).where({ store_id: store_id });
 };
 
 const findAllProducts = async (text, id) => {
@@ -50,35 +50,38 @@ const findOrCreate = async (text, obj) => {
   }
 };
 // GET info from join table
-const getTagByItemId = async (itemID) => {
-  return db('item as i')
-    .join('tag_item as ti', 'i.id', 'ti.item_id')
-    .join('tag as t', 't.id', 'ti.tag_id')
-    .where('ti.item_id', itemID)
+const getTagByItemId = async (productID) => {
+  return db('products as p')
+    .join('product_tags as pt', 'p.id', 'pt.product_id')
+    .join('tags as t', 't.id', 'pt.tag_id')
+    .where('pt.product_id', productID)
     .returning('*');
 };
 // GET info from join table
-const getCategoryItem = async (itemID) => {
-  return db('item as i')
-    .join('category_item as ci', 'i.id', 'ci.item_id')
-    .join('category as c', 'c.id', 'ci.category_id')
-    .where('ci.item_id', itemID)
+const getCategoryItem = async (productID) => {
+  return db('products as p')
+    .join('product_categories as pc', 'p.id', 'pc.product_id')
+    .join('categories as c', 'c.id', 'pc.category_id')
+    .where('pc.product_id', productID)
     .returning('*');
 };
 
 // GET info from join table
-const getPhotoByItemID = async (itemID) => {
-  return db('photo').where({ item_id: itemID }).select('*');
+const getPhotoByItemID = async (productID) => {
+  return db('product_images').where({ product_id: productID }).select('*');
 };
 
 // connect items and tags
-const connectItemsAndTags = async (itemID, tagID) => {
-  return db('tag_item').insert({ item_id: itemID, tag_id: tagID });
+const connectItemsAndTags = async (productID, tagID) => {
+  return db('product_tags').insert({ product_id: productID, tag_id: tagID });
 };
 
 //connect categories and items
-const connectItemsAndCategories = async (itemID, catID) => {
-  return db('category_item').insert({ item_id: itemID, category_id: catID });
+const connectItemsAndCategories = async (productID, catID) => {
+  return db('product_categories').insert({
+    product_id: productID,
+    category_id: catID,
+  });
 };
 
 module.exports = {
