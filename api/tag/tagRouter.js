@@ -5,7 +5,7 @@ const endpointCreator = require('../endPoints');
 const router = express.Router();
 // GET all tags
 router.get('/', authRequired, async (req, res) => {
-  endpointCreator.findAllData('tag', req, res);
+  endpointCreator.findAllData('tags', req, res);
 });
 
 // GET all tags of item id with the item info
@@ -21,7 +21,7 @@ router.get('/item/:itemID/', authRequired, async (req, res) => {
 
 // POST tag
 router.post('/', authRequired, async (req, res) => {
-  endpointCreator.createData('tag', req, res);
+  endpointCreator.createData('tags', req, res);
 });
 
 module.exports = router;
